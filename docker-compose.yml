@@ -1,17 +1,19 @@
-version: "2"
+version: "3.7"
 
 services:
   portainer:
     image: portainer/portainer
-    container_name: portainer
     command: -H unix:///var/run/docker.sock
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime
-    ports:
-      - 9000:9000
-      - 8000:8000
+    expose:
+      - 8000
+      - 9000
+    # ports:
+    #   - 8000:8000
+    #   - 9000:9000
     restart: unless-stopped
 
 volumes:
