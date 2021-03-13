@@ -6,25 +6,23 @@ services:
     container_name: portainer
     command: -H unix:///var/run/docker.sock
     volumes:
-      - portainer_data:/data
+      - portainer-data:/data
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime
     expose:
       - 8000
       - 9000
-    # ports:
-    #   - 8000:8000
-    #   - 9000:9000
     networks:
       - reverse-proxy
       - utils
     restart: unless-stopped
 
 volumes:
-  portainer_data:
+  portainer-data:
+    name: portainer-data
 
 networks:
   reverse-proxy:
     external: true
   utils:
-    external: true
+    name: utils
