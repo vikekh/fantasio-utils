@@ -15,6 +15,6 @@ mkdir $BACKUP_DIR
 
 docker stop portainer
 
-docker run --rm -v portainer-data:/data -v $BACKUP_DIR:/backup ubuntu tar czvf /backup/portainer-data.tar.gz /data
+docker run --rm -v portainer-data:/data -v $BACKUP_DIR:/backup ubuntu tar cvf /backup/portainer-data.tar /data
 
 docker start portainer
